@@ -1,0 +1,14 @@
+{
+  "name": "attendease-portal",
+  "version": "1.0.0",
+  "description": "College Attendance Portal — MERN Stack Final Year Project",
+  "scripts": {
+    "install-all": "cd backend && npm install && cd ../frontend && npm install",
+    "seed": "cd backend && node config/seed.js",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm start",
+    "start:backend": "cd backend && npm start"
+  },
+  "keywords": ["mern", "attendance", "college", "portal"],
+  "author": "Student Final Year Project"
+}
