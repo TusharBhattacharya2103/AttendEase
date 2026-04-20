@@ -8,18 +8,24 @@ dotenv.config();
 const app = express();
 
 // Middleware
+// Middleware
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'https://attend-ease-alpha.vercel.app',
-    'https://attend-ease-c731ozbh2-tushar-bhattacharyas-projects.vercel.app'
-  ],
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      'http://localhost:3000',
+      'https://attend-ease-alpha.vercel.app'
+    ];
+    if (!origin || allowedOrigins.includes(origin) || origin.match(/\.vercel\.app$/)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Handle preflight requests
 app.options('*', cors());
 
 app.use(express.json());
