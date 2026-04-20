@@ -11,10 +11,17 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'https://attend-ease-alpha.vercel.app'
+    'https://attend-ease-alpha.vercel.app',
+    'https://attend-ease-c731ozbh2-tushar-bhattacharyas-projects.vercel.app'
   ],
-  credentials: true
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Handle preflight requests
+app.options('*', cors());
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
